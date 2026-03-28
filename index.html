@@ -6,52 +6,61 @@
     <title>Ouerdia Arezki — Researcher in Spatial Statistics &amp; Random Fields</title>
     <meta name="description" content="Academic page of Ouerdia Arezki, ATER at Université Clermont Auvergne (LMBP). Spatial statistics, 2D-RCAR models, random fields prediction.">
 
-    <!-- Computer Modern fonts for LaTeX aesthetic -->
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --text: #1a1a1a;
-            --text-light: #555;
-            --accent: #d35400;
-            --accent-light: #e67e22;
-            --accent-glow: rgba(211, 84, 0, 0.12);
-            --bg: #fdfdfd;
-            --bg-alt: #f7f5f0;
-            --border: #c8c4bc;
-            --link: #2c3e8f;
-            --rule: #333;
-            --max-w: 740px;
+            --text: #2b2b2b;
+            --text-light: #6b6b6b;
+            --text-muted: #999;
+            --accent: #b45309;
+            --accent-deep: #92400e;
+            --accent-light: #d97706;
+            --accent-glow: rgba(180, 83, 9, 0.07);
+            --accent-surface: rgba(180, 83, 9, 0.04);
+            --bg: #fafaf8;
+            --bg-warm: #f5f3ef;
+            --bg-card: #ffffff;
+            --border: #e5e0d8;
+            --border-light: #edeae4;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.05);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.06);
+            --max-w: 780px;
+            --font-display: "Cormorant Garamond", "Computer Modern Serif", Georgia, serif;
+            --font-body: "Source Sans 3", "Computer Modern Serif", Georgia, serif;
+            --font-mono: "Computer Modern Serif", Georgia, serif;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: "Computer Modern Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
-            font-size: 17px;
-            line-height: 1.68;
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.72;
             color: var(--text);
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* ═══ Animations ═══ */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(22px); }
+            from { opacity: 0; transform: translateY(18px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes slideRight {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes subtlePulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0.15); }
-            50% { box-shadow: 0 0 18px 4px rgba(211, 84, 0, 0.08); }
+        @keyframes growLine {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
         }
 
         /* ═══ Navigation ═══ */
@@ -59,14 +68,14 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: linear-gradient(135deg, rgba(253,253,253,0.97), rgba(247,245,240,0.97));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--accent);
-            padding: 0.55rem 1.5rem;
-            font-size: 0.8rem;
-            letter-spacing: 0.015em;
-            animation: fadeIn 0.6s ease;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6rem 1.5rem;
+            font-size: 0.82rem;
+            letter-spacing: 0.03em;
+            animation: fadeIn 0.5s ease;
         }
         .nav-inner {
             max-width: var(--max-w);
@@ -75,35 +84,40 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
         .nav-name {
+            font-family: var(--font-display);
             font-weight: 700;
-            font-variant: small-caps;
-            font-size: 0.92rem;
+            font-size: 1.05rem;
             color: var(--accent);
             text-decoration: none;
+            letter-spacing: 0.01em;
             transition: color 0.3s;
         }
-        .nav-name:hover { color: var(--accent-light); }
-        .nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+        .nav-name:hover { color: var(--accent-deep); }
+        .nav-links { display: flex; gap: 1.3rem; flex-wrap: wrap; }
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            transition: color 0.25s, transform 0.2s;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            transition: color 0.25s;
             position: relative;
         }
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: -4px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1.5px;
             background: var(--accent);
             transition: width 0.3s ease;
         }
-        nav a:hover { color: var(--accent); transform: translateY(-1px); }
+        nav a:hover { color: var(--accent); }
         nav a:hover::after { width: 100%; }
 
         /* ═══ Main ═══ */
@@ -116,107 +130,113 @@
         /* ═══ Profile ═══ */
         .profile {
             display: flex;
-            gap: 2rem;
+            gap: 2.2rem;
             align-items: flex-start;
-            margin-bottom: 2.5rem;
-            padding: 2rem;
-            border-bottom: none;
-            background: linear-gradient(145deg, #fff 0%, #fdf5ef 50%, #fef0e4 100%);
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-            box-shadow: 0 4px 24px rgba(211, 84, 0, 0.06), 0 1px 4px rgba(0,0,0,0.04);
-            animation: fadeInUp 0.7s ease both;
-        }
-        .profile-photo-placeholder {
-            width: 135px;
-            height: 165px;
-            background: var(--bg-alt);
+            margin-bottom: 3rem;
+            padding: 2.2rem;
+            background: var(--bg-card);
+            border-radius: 14px;
             border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            flex-shrink: 0;
-            text-align: center;
-            padding: 0.5rem;
+            box-shadow: var(--shadow-md);
+            animation: fadeInUp 0.6s ease both;
+            position: relative;
+            overflow: hidden;
         }
-        /* When you add a real photo, use this class instead: */
+        .profile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), var(--accent-light));
+            border-radius: 14px 0 0 14px;
+        }
+
         .profile-photo {
-            width: 135px;
-            height: 165px;
+            width: 140px;
+            height: 170px;
             object-fit: cover;
             flex-shrink: 0;
-            border-radius: 8px;
-            border: 3px solid var(--accent);
-            box-shadow: 0 6px 20px rgba(211, 84, 0, 0.15);
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            box-shadow: var(--shadow-sm);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            animation: fadeInUp 0.7s ease 0.15s both;
+            animation: fadeInUp 0.6s ease 0.12s both;
         }
         .profile-photo:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 28px rgba(211, 84, 0, 0.22);
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
         }
         .profile-info {
-            animation: fadeInUp 0.7s ease 0.25s both;
+            animation: fadeInUp 0.6s ease 0.2s both;
         }
         .profile-info h1 {
-            font-size: 1.75rem;
+            font-family: var(--font-display);
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.15rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
+            line-height: 1.15;
         }
         .profile-info .title {
+            font-family: var(--font-display);
             font-style: italic;
             color: var(--accent);
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            opacity: 0.85;
+            font-size: 1.05rem;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
         }
-        .profile-info p { font-size: 0.92rem; margin-bottom: 0.3rem; }
-        .profile-links { margin-top: 0.7rem; font-size: 0.85rem; }
+        .profile-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-light);
+        }
+        .profile-links {
+            margin-top: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
         .profile-links a {
-            color: #fff;
-            background: var(--accent);
+            color: var(--accent);
+            background: transparent;
             text-decoration: none;
-            margin-right: 0.6rem;
-            padding: 0.3rem 0.85rem;
+            padding: 0.32rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            border: 1.5px solid var(--accent);
+            transition: all 0.25s ease;
             display: inline-block;
+            letter-spacing: 0.02em;
         }
         .profile-links a:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(211, 84, 0, 0.25);
-            text-decoration: none;
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 3px 12px rgba(180, 83, 9, 0.2);
+            transform: translateY(-1px);
         }
 
         /* ═══ Sections ═══ */
         section {
-            margin-bottom: 2.8rem;
-            animation: fadeInUp 0.6s ease both;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.5s ease both;
         }
-        section:nth-child(2) { animation-delay: 0.1s; }
-        section:nth-child(3) { animation-delay: 0.15s; }
-        section:nth-child(4) { animation-delay: 0.2s; }
-        section:nth-child(5) { animation-delay: 0.25s; }
-        section:nth-child(6) { animation-delay: 0.3s; }
+        section:nth-child(2) { animation-delay: 0.08s; }
+        section:nth-child(3) { animation-delay: 0.12s; }
+        section:nth-child(4) { animation-delay: 0.16s; }
+        section:nth-child(5) { animation-delay: 0.2s; }
+        section:nth-child(6) { animation-delay: 0.24s; }
 
         h2 {
-            font-size: 1.2rem;
+            font-family: var(--font-display);
+            font-size: 1.55rem;
             font-weight: 700;
-            font-variant: small-caps;
-            letter-spacing: 0.04em;
-            border-bottom: none;
-            padding-bottom: 0.35rem;
-            margin-bottom: 1.2rem;
-            color: var(--accent);
+            letter-spacing: 0.01em;
+            padding-bottom: 0.45rem;
+            margin-bottom: 1.3rem;
+            color: var(--text);
             position: relative;
         }
         h2::after {
@@ -224,22 +244,23 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            width: 40px;
+            height: 2.5px;
+            background: var(--accent);
             border-radius: 2px;
             transition: width 0.4s ease;
+            transform-origin: left;
         }
-        h2:hover::after {
-            width: 100%;
-        }
+        h2:hover::after { width: 80px; }
 
         h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-top: 1.4rem;
-            margin-bottom: 0.6rem;
-            color: var(--accent);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.6rem;
+            margin-bottom: 0.7rem;
+            color: var(--accent-deep);
+            letter-spacing: 0.01em;
         }
         h3:first-child { margin-top: 0; }
 
@@ -247,164 +268,238 @@
 
         /* ═══ Publication list ═══ */
         .pub-list { list-style: none; counter-reset: pub; }
+        .pub-list li {
+            position: relative;
+            padding-left: 2.4rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.91rem;
+            line-height: 1.58;
+            padding-top: 0.55rem;
+            padding-bottom: 0.55rem;
+            padding-right: 0.7rem;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: all 0.25s ease;
+        }
         .pub-list li::before {
             counter-increment: pub;
             content: "[" counter(pub) "]";
             position: absolute;
-            left: 0;
+            left: 0.3rem;
+            top: 0.55rem;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--accent);
-        }
-        .pub-list li {
-            position: relative;
-            padding-left: 2.2rem;
-            margin-bottom: 0.9rem;
-            font-size: 0.93rem;
-            line-height: 1.55;
-            transition: transform 0.2s, background 0.3s;
-            padding-top: 0.4rem;
-            padding-bottom: 0.4rem;
-            padding-right: 0.5rem;
-            border-radius: 6px;
+            font-family: var(--font-display);
         }
         .pub-list li:hover {
             background: var(--accent-glow);
-            transform: translateX(4px);
+            border-left-color: var(--accent);
         }
-        .paper-title { font-style: italic; }
+        .paper-title { font-style: italic; color: var(--text); }
         .pub-list a {
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             transition: color 0.2s;
         }
-        .pub-list a:hover { color: var(--accent-light); text-decoration: underline; }
+        .pub-list a:hover { color: var(--accent-deep); text-decoration: underline; }
+
+        /* ═══ Badges ═══ */
         .badge {
             display: inline-block;
-            font-size: 0.68rem;
-            font-weight: 700;
-            padding: 0.1rem 0.5rem;
-            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.12rem 0.55rem;
+            border-radius: 10px;
             vertical-align: middle;
-            margin-left: 0.3rem;
-            letter-spacing: 0.02em;
-            transition: transform 0.2s;
+            margin-left: 0.4rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-family: var(--font-body);
         }
-        .badge:hover { transform: scale(1.08); }
-        .badge-revision { background: #fff3cd; color: #856404; border: 1px solid #f0d36e; }
-        .badge-published { background: #d4edda; color: #155724; border: 1px solid #82cfa0; }
-        .badge-accepted { background: #cce5ff; color: #004085; border: 1px solid #80bdff; }
-        .badge-submitted { background: #fde8d8; color: #a04000; border: 1px solid #e8a87c; }
+        .badge-published {
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        .badge-accepted {
+            background: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+        .badge-submitted {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
 
         /* ═══ Research themes ═══ */
         .research-themes { list-style: none; }
         .research-themes li {
             position: relative;
-            padding-left: 1.4rem;
-            margin-bottom: 0.55rem;
-            font-size: 0.93rem;
-        }
-        .research-themes li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        .research-themes li {
+            padding-left: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.91rem;
+            color: var(--text);
             transition: transform 0.2s;
         }
-        .research-themes li:hover {
-            transform: translateX(6px);
+        .research-themes li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
         }
+        .research-themes li:hover { transform: translateX(4px); }
 
         /* ═══ Timeline ═══ */
         .timeline { list-style: none; }
         .timeline li {
             display: flex;
-            gap: 1.2rem;
-            margin-bottom: 1rem;
-            font-size: 0.93rem;
+            gap: 1.4rem;
+            margin-bottom: 1.1rem;
+            font-size: 0.91rem;
+            position: relative;
         }
         .timeline .year {
             flex-shrink: 0;
-            width: 110px;
-            font-weight: 700;
-            color: #fff;
-            background: var(--accent);
-            font-size: 0.8rem;
-            padding: 0.15rem 0.6rem;
-            border-radius: 12px;
-            text-align: center;
-            height: fit-content;
-            margin-top: 0.1rem;
+            width: 115px;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-family: var(--font-body);
+            padding-top: 0.08rem;
+            letter-spacing: 0.02em;
         }
         .timeline .desc { flex: 1; }
-        .timeline .inst { font-style: italic; color: var(--text-light); }
+        .timeline .inst { font-style: italic; color: var(--text-light); font-size: 0.88rem; }
 
         /* ═══ Teaching ═══ */
-        .teaching-block { margin-bottom: 1.5rem; }
+        .teaching-block {
+            margin-bottom: 1.6rem;
+            padding: 1.2rem 1.4rem;
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+        }
+        .teaching-block:hover {
+            box-shadow: var(--shadow-md);
+        }
         .teaching-block h4 {
-            font-size: 0.92rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-            border-left: 3px solid var(--accent);
-            padding-left: 0.6rem;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: var(--text);
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .teaching-block h4 .hours {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
         .teaching-grid {
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 0.15rem 1.5rem;
-            font-size: 0.88rem;
-            line-height: 1.5;
+            gap: 0.2rem 1.8rem;
+            font-size: 0.87rem;
+            line-height: 1.55;
             align-items: baseline;
         }
-        .teaching-grid .course { white-space: normal; }
+        .teaching-grid .course { color: var(--text); }
         .teaching-grid .level {
-            color: var(--text-light);
+            color: var(--text-muted);
             text-align: right;
             white-space: nowrap;
             min-width: 75px;
+            font-size: 0.82rem;
+            font-weight: 500;
         }
 
         /* ═══ Contact ═══ */
-        .contact-line { font-size: 0.93rem; margin-bottom: 0.35rem; }
+        #contact {
+            padding: 1.8rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-line {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
         .contact-line .label {
             display: inline-block;
-            width: 90px;
-            font-weight: 700;
-            font-variant: small-caps;
-            font-size: 0.85rem;
+            width: 80px;
+            font-weight: 600;
+            font-size: 0.78rem;
             color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            flex-shrink: 0;
         }
-        .contact-line a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-        .contact-line a:hover { text-decoration: underline; color: var(--accent-light); }
+        .contact-line a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .contact-line a:hover { text-decoration: underline; color: var(--accent-deep); }
 
         /* ═══ Footer ═══ */
         footer {
             max-width: var(--max-w);
             margin: 0 auto;
-            padding: 1.5rem 1.5rem 2rem;
-            border-top: 2px solid var(--accent);
+            padding: 1.8rem 1.5rem 2.5rem;
+            border-top: 1px solid var(--border);
             font-size: 0.78rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        /* ═══ Separator ═══ */
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: var(--border-light);
+            margin: 0.8rem 0 1.2rem;
         }
 
         /* ═══ Responsive ═══ */
         @media (max-width: 600px) {
-            body { font-size: 16px; }
-            .profile { flex-direction: column; align-items: center; text-align: center; }
-            .profile-links { justify-content: center; display: flex; flex-wrap: wrap; }
-            .timeline li { flex-direction: column; gap: 0.15rem; }
+            body { font-size: 15px; }
+            .profile {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            .profile::before { 
+                width: 100%; height: 4px; 
+                border-radius: 14px 14px 0 0;
+            }
+            .profile-links { justify-content: center; }
+            .profile-info p { text-align: center; }
+            .timeline li { flex-direction: column; gap: 0.2rem; }
             .timeline .year { width: auto; }
             .teaching-grid { grid-template-columns: 1fr; }
             .teaching-grid .level { text-align: left; }
             nav .nav-links { gap: 0.7rem; }
+            .contact-line { flex-direction: column; gap: 0.1rem; }
+            .contact-line .label { width: auto; }
+            h2 { font-size: 1.35rem; }
         }
     </style>
 </head>
@@ -429,19 +524,15 @@
 
 <!-- ══════════════ PROFILE ══════════════ -->
 <header class="profile" id="about">
-    <!--
-        Pour ajouter la photo : remplacer le div ci-dessous par :
-        <img src="photo.jpg" alt="Ouerdia Arezki" class="profile-photo">
-    -->
     <img src="Ouerdia.jpg" alt="Ouerdia Arezki" class="profile-photo">
 
     <div class="profile-info">
         <h1>Ouerdia Arezki</h1>
-        <div class="title">Attachée Temporaire d'Enseignement et de Recherche (ATER)</div>
+        <div class="title">Attachée d'Enseignement et de Recherche (ATER)</div>
         <p>Laboratoire de Mathématiques Blaise Pascal (LMBP), UMR CNRS 6620</p>
         <p>Université Clermont Auvergne &mdash; IUT d'Aurillac, Département Science des données</p>
         <div class="profile-links">
-            <a href="/cdn-cgi/l/email-protection#523d273720363b337c33203728393b122731337c3420">Email</a>
+            <a href="mailto:ouerdia.arezki@uca.fr">Email</a>
             <a href="https://scholar.google.com/citations?hl=fr&user=Kfbp6IwAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
             <a href="https://github.com/OuerdiaArezki" target="_blank" rel="noopener">GitHub</a>
             <a href="https://www.linkedin.com/in/ouerdia-arezki-437284134" target="_blank" rel="noopener">LinkedIn</a>
@@ -453,18 +544,15 @@
 <section id="research">
     <h2>Research Interests</h2>
 
-    <p>My research focuses on the prediction and estimation of random fields, with applications to spatio-temporal and climate data, as well as observer-based stabilization for nonlinear dynamical systems with random delays.</p>
+    <p>My research focuses on the prediction and estimation of random fields, with applications to spatial data.</p>
 
     <ul class="research-themes">
         <li>Prediction and estimation of autoregressive random fields and two-dimensional random coefficient autoregressive (2D-RCAR) models</li>
         <li>Impact of missing data on estimation and prediction accuracy</li>
         <li>Application of prediction methods to spatio-temporal and climate data (e.g., E-OBS humidity fields, temperature estimation in metropolitan France)</li>
         <li>Second-order stationarity conditions for 2D-RCAR models: asymptotic mean squared prediction error, asymptotic variance via vectorization and Kronecker product techniques</li>
-        <li>Observer-based stabilization for nonlinear delayed dynamical systems using autoregressive models, with applications to autonomous vehicles</li>
-        <li>Spatio-temporal process modeling for climate and economic applications</li>
+        <li>Spatial process modeling for climate and economic applications</li>
     </ul>
-
-
 </section>
 
 <!-- ══════════════ PUBLICATIONS ══════════════ -->
@@ -478,67 +566,32 @@
             <span class="paper-title">"On the Asymptotic Behavior of the Multi-step Prediction Error for a Nonlinear Random Fields Model with Estimated Coefficients."</span>
             Methodology and Computing in Applied Probability, 28, 28, 2026.
             <span class="badge badge-published">Published</span>
+            <a href="https://doi.org/10.1007/s11009-026-10257-y" target="_blank" rel="noopener">[DOI]</a>
         </li>
         <li>
             A. Saidi, A. Hamaz, <strong>O. Arezki</strong>.
             <span class="paper-title">"Estimation in nonlinear random fields models of autoregressive type with random parameters."</span>
             Communications in Statistics &mdash; Theory and Methods, 53(1), 294&ndash;309, 2024.
             <span class="badge badge-published">Published</span>
+            <a href="https://doi.org/10.1080/03610926.2022.2077962" target="_blank" rel="noopener">[DOI]</a>
         </li>
         <li>
             <strong>O. Arezki</strong>, A. Hamaz.
             <span class="paper-title">"On linear prediction for stationary random fields with nonsymmetrical half-plane past."</span>
             Communications in Statistics &mdash; Theory and Methods, 51(15), 5298&ndash;5309, 2022.
             <span class="badge badge-published">Published</span>
+            <a href="https://doi.org/10.1080/03610926.2020.1837880" target="_blank" rel="noopener">[DOI]</a>
         </li>
         <li>
             A. Hamaz, <strong>O. Arezki</strong>, F. Achemine.
             <span class="paper-title">"Impact of missing data on the prediction of random fields."</span>
             Journal of Applied Statistics, 47(1), 132&ndash;149, 2020.
             <span class="badge badge-published">Published</span>
+            <a href="https://doi.org/10.1080/02664763.2019.1633286" target="_blank" rel="noopener">[DOI]</a>
         </li>
     </ol>
 
     <h3>International Conferences</h3>
-    <ol class="pub-list">
-        <li>
-            <strong>O. Arezki</strong>.
-            <span class="paper-title">"Linear Prediction for Stationary Random Fields with an Application to Poverty Levels in Texas."</span>
-            7th International Conference on Statistics: Theory and Applications (ICSTA 2025), Paris.
-        </li>
-        <li>
-            <strong>O. Arezki</strong>.
-            <span class="paper-title">"Lead Prediction of 2D-RCAR Random Fields: Application to Spatio-Temporal Modeling."</span>
-            Journées de Statistique (JdS 2025), Marseille.
-        </li>
-        <li>
-            <strong>O. Arezki</strong>, A. Hamaz.
-            <span class="paper-title">"Prediction Error of Nonlinear Spatial Process."</span>
-            ICCMA 2023, Mila, Algeria.
-        </li>
-        <li>
-            <strong>O. Arezki</strong>, A. Hamaz.
-            <span class="paper-title">"Prediction Error of Nonlinear Random Fields Models."</span>
-            ICECMI 2023, Constantine, Algeria.
-        </li>
-        <li>
-            A. Saidi, <strong>O. Arezki</strong>, A. Hamaz.
-            <span class="paper-title">"Estimation of two-dimensionally indexed Random Coefficient Autoregressive models."</span>
-            CNMPA, 2021.
-        </li>
-        <li>
-            A. Hamaz, <strong>O. Arezki</strong>.
-            <span class="paper-title">"Influence des données manquantes sur la prédiction des champs aléatoires stationnaires."</span>
-            Modélisation Stochastique et Statistique (MSS 2019), pp. 144&ndash;147.
-        </li>
-        <li>
-            <strong>O. Arezki</strong>, A. Hamaz.
-            <span class="paper-title">"Evolution of Contemporary Mathematics and their Impact in Sciences and Technology."</span>
-            ECMI-SciTech, 2017.
-        </li>
-    </ol>
-
-    <h3>Accepted</h3>
     <ol class="pub-list">
         <li>
             <strong>O. Arezki</strong>, P.-M. Grollemund.
@@ -549,8 +602,43 @@
         <li>
             <u><strong>O. Arezki</strong></u>.
             <span class="paper-title">"Asymptotic Normality for 2D-RCAR Models with Application to Climate Data."</span>
-            GEOMED 2026, Pamplona, Spain.
+            14th International Conference on Spatial Statistics and Epidemiology (GEOMED 2026), Pamplona, Spain.
             <span class="badge badge-accepted">Accepted</span>
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, S. Pinel, S. Viguier.
+            <span class="paper-title">"Linear Prediction for Stationary Random Fields with an Application to Poverty Levels in Texas."</span>
+            7th International Conference on Statistics: Theory and Applications (ICSTA 2025), August 17&ndash;19, 2025, Paris, France.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, S. Pinel, S. Viguier.
+            <span class="paper-title">"Lead Prediction of 2D-RCAR Random Fields: Application to Spatio-Temporal Modeling."</span>
+            56<sup>es</sup> Journées de Statistique de la SFdS (JdS 2025), 2&ndash;6 juin 2025, Marseille, France.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Prediction Error of Nonlinear Random Fields Models."</span>
+            International Conference on Evolution and Contemporary Mathematics and Their Impact (ICECMI 2023), Constantine, Algeria.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Prediction Error of Nonlinear Spatial Process."</span>
+            International Conference on Contemporary Mathematics and Its Applications (ICCMA 2023), Mila, Algeria.
+        </li>
+        <li>
+            A. Saidi, <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Estimation of two-dimensionally indexed Random Coefficient Autoregressive models."</span>
+            Colloque National de Mathématiques Pures et Appliquées (CNMPA 2021), Algeria.
+        </li>
+        <li>
+            A. Hamaz, <strong>O. Arezki</strong>.
+            <span class="paper-title">"Influence des données manquantes sur la prédiction des champs aléatoires stationnaires."</span>
+            Modélisation Stochastique et Statistique (MSS 2019), Book of Proceedings, pp. 144&ndash;147.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Estimation of Missing Data in Random Fields."</span>
+            The First International Conference on the "Evolution of Contemporary Mathematics and their Impact in Sciences and Technology" (ECMI-SciTech 2017), Algeria.
         </li>
     </ol>
 
@@ -594,7 +682,7 @@
     <h2>Teaching</h2>
 
     <div class="teaching-block">
-        <h4>2025&ndash;2026 &mdash; Université Clermont Auvergne, IUT d'Aurillac (192h)</h4>
+        <h4>2025&ndash;2026 &mdash; Université Clermont Auvergne, IUT d'Aurillac <span class="hours">(192h)</span></h4>
         <div class="teaching-grid">
             <span class="course">Modélisation statistique &amp; Big Data (CM/TD/TP)</span><span class="level">BUT 3 SD</span>
             <span class="course">Approfondissement en Big Data (TD/TP)</span><span class="level">BUT 3 SD</span>
@@ -608,7 +696,7 @@
     </div>
 
     <div class="teaching-block">
-        <h4>2024&ndash;2025 &mdash; Université de Perpignan, IUT de Carcassonne (192h)</h4>
+        <h4>2024&ndash;2025 &mdash; Université de Perpignan, IUT de Carcassonne <span class="hours">(192h)</span></h4>
         <div class="teaching-grid">
             <span class="course">Tests d'hypothèses pour l'analyse bivariée (TP)</span><span class="level">BUT 2 SD</span>
             <span class="course">SAÉ : Prévision de données temporelles (TP)</span><span class="level">BUT 2 SD</span>
@@ -619,7 +707,7 @@
     </div>
 
     <div class="teaching-block">
-        <h4>2021&ndash;2024 &mdash; Université Mouloud Mammeri, Tizi-Ouzou (360h/an)</h4>
+        <h4>2021&ndash;2024 &mdash; Université Mouloud Mammeri, Tizi-Ouzou <span class="hours">(360h/an)</span></h4>
         <div class="teaching-grid">
             <span class="course">Maths 1 (CM/TD)</span><span class="level">1<sup>re</sup> année Licence</span>
             <span class="course">Statistique descriptive (CM/TD)</span><span class="level">1<sup>re</sup> année Licence</span>
@@ -689,7 +777,11 @@
     </ul>
 
     <h3>Qualifications &amp; Certifications</h3>
-    <p>Qualification CNU section 26. Coursera certifications: Data Analysis with R Programming, Supervised Machine Learning (Regression and Classification), Advanced Learning Algorithms.</p>
+    <p>Qualification CNU section 26. Coursera certifications:
+        <a href="https://www.coursera.org/learn/data-analysis-r" target="_blank" rel="noopener">Data Analysis with R Programming</a>,
+        <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Supervised Machine Learning: Regression and Classification</a>,
+        <a href="https://www.coursera.org/learn/advanced-learning-algorithms" target="_blank" rel="noopener">Advanced Learning Algorithms</a>,
+        <a href="https://www.coursera.org/learn/neural-networks-deep-learning" target="_blank" rel="noopener">Neural Networks and Deep Learning</a>.</p>
 
     <h3>Supervision</h3>
     <p>Participation in the co-supervision of <strong>Amel Saidi</strong> (2019&ndash;2022), PhD in Mathematics (Probabilités &amp; Statistique): <em>Estimation et Prédiction des Processus Spatiaux</em>, Université Mouloud Mammeri.</p>
@@ -703,9 +795,9 @@
 <!-- ══════════════ CONTACT ══════════════ -->
 <section id="contact">
     <h2>Contact</h2>
-    <div class="contact-line"><span class="label">Email</span> <a href="/cdn-cgi/l/email-protection#147b617166707d753a7566716e7f7d546177753a7266"><span class="__cf_email__" data-cfemail="ee819b8b9c8a878fc08f9c8b948587ae9b8d8fc0889c">[email&#160;protected]</span></a></div>
-    <div class="contact-line"><span class="label">Address</span> IUT d'Aurillac, 100 rue de l'Égalité, 15000 Aurillac, France</div>
-    <div class="contact-line"><span class="label">Lab</span> LMBP (UMR CNRS 6620), Université Clermont Auvergne</div>
+    <div class="contact-line"><span class="label">Email</span> <a href="mailto:ouerdia.arezki@uca.fr">ouerdia.arezki@uca.fr</a></div>
+    <div class="contact-line"><span class="label">Address</span> <span>IUT d'Aurillac, 100 rue de l'Égalité, 15000 Aurillac, France</span></div>
+    <div class="contact-line"><span class="label">Lab</span> <span>LMBP (UMR CNRS 6620), Université Clermont Auvergne</span></div>
 </section>
 
 <footer>
@@ -713,6 +805,5 @@
 </footer>
 
 </main>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>
