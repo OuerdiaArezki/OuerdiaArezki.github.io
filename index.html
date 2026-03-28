@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouerdia Arezki — Researcher in Spatial Statistics &amp; Random Fields</title>
+    <meta name="description" content="Academic page of Ouerdia Arezki, ATER at Université Clermont Auvergne (LMBP). Spatial statistics, 2D-RCAR models, random fields prediction.">
+
+    <!-- Computer Modern fonts for LaTeX aesthetic -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+
+    <style>
+        :root {
+            --text: #1a1a1a;
+            --text-light: #555;
+            --accent: #d35400;
+            --accent-light: #e67e22;
+            --accent-glow: rgba(211, 84, 0, 0.12);
+            --bg: #fdfdfd;
+            --bg-alt: #f7f5f0;
+            --border: #c8c4bc;
+            --link: #2c3e8f;
+            --rule: #333;
+            --max-w: 740px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: "Computer Modern Serif", "Latin Modern Roman", Georgia, "Times New Roman", serif;
+            font-size: 17px;
+            line-height: 1.68;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══ Animations ═══ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideRight {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes subtlePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(211, 84, 0, 0.15); }
+            50% { box-shadow: 0 0 18px 4px rgba(211, 84, 0, 0.08); }
+        }
+
+        /* ═══ Navigation ═══ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, rgba(253,253,253,0.97), rgba(247,245,240,0.97));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent);
+            padding: 0.55rem 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.015em;
+            animation: fadeIn 0.6s ease;
+        }
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .nav-name {
+            font-weight: 700;
+            font-variant: small-caps;
+            font-size: 0.92rem;
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-name:hover { color: var(--accent-light); }
+        .nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.25s, transform 0.2s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        nav a:hover { color: var(--accent); transform: translateY(-1px); }
+        nav a:hover::after { width: 100%; }
+
+        /* ═══ Main ═══ */
+        main {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* ═══ Profile ═══ */
+        .profile {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            border-bottom: none;
+            background: linear-gradient(145deg, #fff 0%, #fdf5ef 50%, #fef0e4 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 24px rgba(211, 84, 0, 0.06), 0 1px 4px rgba(0,0,0,0.04);
+            animation: fadeInUp 0.7s ease both;
+        }
+        .profile-photo-placeholder {
+            width: 135px;
+            height: 165px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            flex-shrink: 0;
+            text-align: center;
+            padding: 0.5rem;
+        }
+        /* When you add a real photo, use this class instead: */
+        .profile-photo {
+            width: 135px;
+            height: 165px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 8px;
+            border: 3px solid var(--accent);
+            box-shadow: 0 6px 20px rgba(211, 84, 0, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 0.7s ease 0.15s both;
+        }
+        .profile-photo:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 28px rgba(211, 84, 0, 0.22);
+        }
+        .profile-info {
+            animation: fadeInUp 0.7s ease 0.25s both;
+        }
+        .profile-info h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .profile-info .title {
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.85;
+        }
+        .profile-info p { font-size: 0.92rem; margin-bottom: 0.3rem; }
+        .profile-links { margin-top: 0.7rem; font-size: 0.85rem; }
+        .profile-links a {
+            color: #fff;
+            background: var(--accent);
+            text-decoration: none;
+            margin-right: 0.6rem;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        .profile-links a:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 84, 0, 0.25);
+            text-decoration: none;
+        }
+
+        /* ═══ Sections ═══ */
+        section {
+            margin-bottom: 2.8rem;
+            animation: fadeInUp 0.6s ease both;
+        }
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.15s; }
+        section:nth-child(4) { animation-delay: 0.2s; }
+        section:nth-child(5) { animation-delay: 0.25s; }
+        section:nth-child(6) { animation-delay: 0.3s; }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-variant: small-caps;
+            letter-spacing: 0.04em;
+            border-bottom: none;
+            padding-bottom: 0.35rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        h2:hover::after {
+            width: 100%;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 1.4rem;
+            margin-bottom: 0.6rem;
+            color: var(--accent);
+        }
+        h3:first-child { margin-top: 0; }
+
+        p { margin-bottom: 0.75rem; }
+
+        /* ═══ Publication list ═══ */
+        .pub-list { list-style: none; counter-reset: pub; }
+        .pub-list li::before {
+            counter-increment: pub;
+            content: "[" counter(pub) "]";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+        .pub-list li {
+            position: relative;
+            padding-left: 2.2rem;
+            margin-bottom: 0.9rem;
+            font-size: 0.93rem;
+            line-height: 1.55;
+            transition: transform 0.2s, background 0.3s;
+            padding-top: 0.4rem;
+            padding-bottom: 0.4rem;
+            padding-right: 0.5rem;
+            border-radius: 6px;
+        }
+        .pub-list li:hover {
+            background: var(--accent-glow);
+            transform: translateX(4px);
+        }
+        .paper-title { font-style: italic; }
+        .pub-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.82rem;
+            transition: color 0.2s;
+        }
+        .pub-list a:hover { color: var(--accent-light); text-decoration: underline; }
+        .badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+            vertical-align: middle;
+            margin-left: 0.3rem;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s;
+        }
+        .badge:hover { transform: scale(1.08); }
+        .badge-revision { background: #fff3cd; color: #856404; border: 1px solid #f0d36e; }
+        .badge-published { background: #d4edda; color: #155724; border: 1px solid #82cfa0; }
+        .badge-accepted { background: #cce5ff; color: #004085; border: 1px solid #80bdff; }
+        .badge-submitted { background: #fde8d8; color: #a04000; border: 1px solid #e8a87c; }
+
+        /* ═══ Research themes ═══ */
+        .research-themes { list-style: none; }
+        .research-themes li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.55rem;
+            font-size: 0.93rem;
+        }
+        .research-themes li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .research-themes li {
+            transition: transform 0.2s;
+        }
+        .research-themes li:hover {
+            transform: translateX(6px);
+        }
+
+        /* ═══ Timeline ═══ */
+        .timeline { list-style: none; }
+        .timeline li {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 0.93rem;
+        }
+        .timeline .year {
+            flex-shrink: 0;
+            width: 110px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--accent);
+            font-size: 0.8rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            text-align: center;
+            height: fit-content;
+            margin-top: 0.1rem;
+        }
+        .timeline .desc { flex: 1; }
+        .timeline .inst { font-style: italic; color: var(--text-light); }
+
+        /* ═══ Teaching ═══ */
+        .teaching-block { margin-bottom: 1.5rem; }
+        .teaching-block h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+            padding-left: 0.6rem;
+        }
+        .teaching-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.15rem 1.5rem;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            align-items: baseline;
+        }
+        .teaching-grid .course { white-space: normal; }
+        .teaching-grid .level {
+            color: var(--text-light);
+            text-align: right;
+            white-space: nowrap;
+            min-width: 75px;
+        }
+
+        /* ═══ Contact ═══ */
+        .contact-line { font-size: 0.93rem; margin-bottom: 0.35rem; }
+        .contact-line .label {
+            display: inline-block;
+            width: 90px;
+            font-weight: 700;
+            font-variant: small-caps;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+        .contact-line a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .contact-line a:hover { text-decoration: underline; color: var(--accent-light); }
+
+        /* ═══ Footer ═══ */
+        footer {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 2rem;
+            border-top: 2px solid var(--accent);
+            font-size: 0.78rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* ═══ Responsive ═══ */
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .profile { flex-direction: column; align-items: center; text-align: center; }
+            .profile-links { justify-content: center; display: flex; flex-wrap: wrap; }
+            .timeline li { flex-direction: column; gap: 0.15rem; }
+            .timeline .year { width: auto; }
+            .teaching-grid { grid-template-columns: 1fr; }
+            .teaching-grid .level { text-align: left; }
+            nav .nav-links { gap: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ NAVIGATION ══════════════ -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Ouerdia Arezki</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#cv">CV</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- ══════════════ PROFILE ══════════════ -->
+<header class="profile" id="about">
+    <!--
+        Pour ajouter la photo : remplacer le div ci-dessous par :
+        <img src="photo.jpg" alt="Ouerdia Arezki" class="profile-photo">
+    -->
+    <img src="Ouerdia.jpg" alt="Ouerdia Arezki" class="profile-photo">
+
+    <div class="profile-info">
+        <h1>Ouerdia Arezki</h1>
+        <div class="title">Attachée Temporaire d'Enseignement et de Recherche (ATER)</div>
+        <p>Laboratoire de Mathématiques Blaise Pascal (LMBP), UMR CNRS 6620</p>
+        <p>Université Clermont Auvergne &mdash; IUT d'Aurillac, Département Science des données</p>
+        <div class="profile-links">
+            <a href="/cdn-cgi/l/email-protection#523d273720363b337c33203728393b122731337c3420">Email</a>
+            <a href="https://scholar.google.com/citations?hl=fr&user=Kfbp6IwAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a href="https://github.com/OuerdiaArezki" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/ouerdia-arezki-437284134" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+    </div>
+</header>
+
+<!-- ══════════════ RESEARCH ══════════════ -->
+<section id="research">
+    <h2>Research Interests</h2>
+
+    <p>My research focuses on the prediction and estimation of random fields, with applications to spatio-temporal and climate data, as well as observer-based stabilization for nonlinear dynamical systems with random delays.</p>
+
+    <ul class="research-themes">
+        <li>Prediction and estimation of autoregressive random fields and two-dimensional random coefficient autoregressive (2D-RCAR) models</li>
+        <li>Impact of missing data on estimation and prediction accuracy</li>
+        <li>Application of prediction methods to spatio-temporal and climate data (e.g., E-OBS humidity fields, temperature estimation in metropolitan France)</li>
+        <li>Second-order stationarity conditions for 2D-RCAR models: asymptotic mean squared prediction error, asymptotic variance via vectorization and Kronecker product techniques</li>
+        <li>Observer-based stabilization for nonlinear delayed dynamical systems using autoregressive models, with applications to autonomous vehicles</li>
+        <li>Spatio-temporal process modeling for climate and economic applications</li>
+    </ul>
+
+
+</section>
+
+<!-- ══════════════ PUBLICATIONS ══════════════ -->
+<section id="publications">
+    <h2>Publications</h2>
+
+    <h3>International Journals</h3>
+    <ol class="pub-list">
+        <li>
+            <strong>O. Arezki</strong>, S. Pinel, P.-M. Grollemund.
+            <span class="paper-title">"On the Asymptotic Behavior of the Multi-step Prediction Error for a Nonlinear Random Fields Model with Estimated Coefficients."</span>
+            Methodology and Computing in Applied Probability, 28, 28, 2026.
+            <span class="badge badge-published">Published</span>
+        </li>
+        <li>
+            A. Saidi, A. Hamaz, <strong>O. Arezki</strong>.
+            <span class="paper-title">"Estimation in nonlinear random fields models of autoregressive type with random parameters."</span>
+            Communications in Statistics &mdash; Theory and Methods, 53(1), 294&ndash;309, 2024.
+            <span class="badge badge-published">Published</span>
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"On linear prediction for stationary random fields with nonsymmetrical half-plane past."</span>
+            Communications in Statistics &mdash; Theory and Methods, 51(15), 5298&ndash;5309, 2022.
+            <span class="badge badge-published">Published</span>
+        </li>
+        <li>
+            A. Hamaz, <strong>O. Arezki</strong>, F. Achemine.
+            <span class="paper-title">"Impact of missing data on the prediction of random fields."</span>
+            Journal of Applied Statistics, 47(1), 132&ndash;149, 2020.
+            <span class="badge badge-published">Published</span>
+        </li>
+    </ol>
+
+    <h3>International Conferences</h3>
+    <ol class="pub-list">
+        <li>
+            <strong>O. Arezki</strong>.
+            <span class="paper-title">"Linear Prediction for Stationary Random Fields with an Application to Poverty Levels in Texas."</span>
+            7th International Conference on Statistics: Theory and Applications (ICSTA 2025), Paris.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>.
+            <span class="paper-title">"Lead Prediction of 2D-RCAR Random Fields: Application to Spatio-Temporal Modeling."</span>
+            Journées de Statistique (JdS 2025), Marseille.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Prediction Error of Nonlinear Spatial Process."</span>
+            ICCMA 2023, Mila, Algeria.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Prediction Error of Nonlinear Random Fields Models."</span>
+            ICECMI 2023, Constantine, Algeria.
+        </li>
+        <li>
+            A. Saidi, <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Estimation of two-dimensionally indexed Random Coefficient Autoregressive models."</span>
+            CNMPA, 2021.
+        </li>
+        <li>
+            A. Hamaz, <strong>O. Arezki</strong>.
+            <span class="paper-title">"Influence des données manquantes sur la prédiction des champs aléatoires stationnaires."</span>
+            Modélisation Stochastique et Statistique (MSS 2019), pp. 144&ndash;147.
+        </li>
+        <li>
+            <strong>O. Arezki</strong>, A. Hamaz.
+            <span class="paper-title">"Evolution of Contemporary Mathematics and their Impact in Sciences and Technology."</span>
+            ECMI-SciTech, 2017.
+        </li>
+    </ol>
+
+    <h3>Accepted</h3>
+    <ol class="pub-list">
+        <li>
+            <strong>O. Arezki</strong>, P.-M. Grollemund.
+            <span class="paper-title">"A Score Test for Random Coefficient Variability in Two-Dimensional Spatial Autoregressive Models."</span>
+            8th International Conference on Statistics: Theory and Applications (ICSTA 2026), London, United Kingdom, August 16&ndash;18, 2026.
+            <span class="badge badge-accepted">Accepted</span>
+        </li>
+        <li>
+            <u><strong>O. Arezki</strong></u>.
+            <span class="paper-title">"Asymptotic Normality for 2D-RCAR Models with Application to Climate Data."</span>
+            GEOMED 2026, Pamplona, Spain.
+            <span class="badge badge-accepted">Accepted</span>
+        </li>
+    </ol>
+
+    <h3>Conferences &mdash; Under Review</h3>
+    <ol class="pub-list">
+        <li>
+            <strong>O. Arezki</strong>.
+            <span class="paper-title">"A Truncated LS Test with χ²-Mixture Distribution for Detecting Random Coefficient Variability in Nonlinear Random Fields."</span>
+            57es Journées de Statistique de la SFdS (JdS 2026), Université Clermont Auvergne, France.
+            <span class="badge badge-submitted">Under Review</span>
+        </li>
+        <li>
+            <strong>O. Arezki</strong>.
+            <span class="paper-title">"Misspecification-Robust Inference in Nonlinear Spatial Autoregressive Models: Sandwich Covariance, Confidence Regions, and Monte Carlo Evidence."</span>
+            20th World Conference of the Spatial Econometrics Association (SEA) &amp; 24th International Workshop in Spatial Econometrics and Statistics (SEW), Paris, France, June 17&ndash;18, 2026.
+            <span class="badge badge-submitted">Under Review</span>
+        </li>
+    </ol>
+
+    <h3>Journal Articles &mdash; Under Review</h3>
+    <ol class="pub-list">
+        <li>
+            <strong>O. Arezki</strong>.
+            <span class="paper-title">"Asymptotic Normality and Sandwich Variance Estimation for 2D-RCAR Models with Application to European Spatial Temperature Fields."</span>
+            Probability Theory and Related Fields, Springer, 2026.
+            <span class="badge badge-submitted">Under Review</span>
+            <a href="https://hal.science/hal-05553440v1" target="_blank" rel="noopener">[HAL]</a>
+        </li>
+        <li>
+            <strong>O. Arezki</strong>.
+            <span class="paper-title">"Asymptotic Inference and Testing in Two-Dimensional Random Coefficient Autoregressive Models."</span>
+            Statistical Papers, Springer, 2026.
+            <span class="badge badge-submitted">Under Review</span>
+            <a href="https://hal.science/hal-05569446v1" target="_blank" rel="noopener">[HAL]</a>
+        </li>
+    </ol>
+</section>
+
+<!-- ══════════════ TEACHING ══════════════ -->
+<section id="teaching">
+    <h2>Teaching</h2>
+
+    <div class="teaching-block">
+        <h4>2025&ndash;2026 &mdash; Université Clermont Auvergne, IUT d'Aurillac (192h)</h4>
+        <div class="teaching-grid">
+            <span class="course">Modélisation statistique &amp; Big Data (CM/TD/TP)</span><span class="level">BUT 3 SD</span>
+            <span class="course">Approfondissement en Big Data (TD/TP)</span><span class="level">BUT 3 SD</span>
+            <span class="course">Apprentissage statistique pour l'IA (CM/TD/TP)</span><span class="level">BUT 3 SD</span>
+            <span class="course">Méthodes statistiques pour le Big Data (CM/TD/TP)</span><span class="level">BUT 3 SD</span>
+            <span class="course">Séries chronologiques (CM)</span><span class="level">BUT 2 SD</span>
+            <span class="course">Statistique descriptive bivariée (TD)</span><span class="level">BUT 1 SD</span>
+            <span class="course">Estimation par échantillonnage (TP)</span><span class="level">BUT 1 SD</span>
+            <span class="course">Statistique inférentielle (TD)</span><span class="level">BUT 1 SD</span>
+        </div>
+    </div>
+
+    <div class="teaching-block">
+        <h4>2024&ndash;2025 &mdash; Université de Perpignan, IUT de Carcassonne (192h)</h4>
+        <div class="teaching-grid">
+            <span class="course">Tests d'hypothèses pour l'analyse bivariée (TP)</span><span class="level">BUT 2 SD</span>
+            <span class="course">SAÉ : Prévision de données temporelles (TP)</span><span class="level">BUT 2 SD</span>
+            <span class="course">Probabilités (CM/TD)</span><span class="level">BUT 1 SD</span>
+            <span class="course">Modèle linéaire (TP)</span><span class="level">BUT 2 SD</span>
+            <span class="course">SAÉ : Prédire une variable quantitative (TP)</span><span class="level">BUT 2 SD</span>
+        </div>
+    </div>
+
+    <div class="teaching-block">
+        <h4>2021&ndash;2024 &mdash; Université Mouloud Mammeri, Tizi-Ouzou (360h/an)</h4>
+        <div class="teaching-grid">
+            <span class="course">Maths 1 (CM/TD)</span><span class="level">1<sup>re</sup> année Licence</span>
+            <span class="course">Statistique descriptive (CM/TD)</span><span class="level">1<sup>re</sup> année Licence</span>
+            <span class="course">Analyse 1 (CM/TD)</span><span class="level">1<sup>re</sup> année Licence</span>
+            <span class="course">Statistique bayésienne (CM/TD)</span><span class="level">Master</span>
+            <span class="course">Processus stochastiques (CM/TD)</span><span class="level">Master</span>
+            <span class="course">Probabilités et statistiques (CM/TD)</span><span class="level">2<sup>e</sup> année Licence</span>
+            <span class="course">Méthodes numériques (CM/TD/TP)</span><span class="level">2<sup>e</sup> année Licence</span>
+            <span class="course">Maths 2 (CM/TD)</span><span class="level">2<sup>e</sup> année Ingénieur</span>
+            <span class="course">Maths 3 (CM/TD)</span><span class="level">3<sup>e</sup> année Ingénieur</span>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════ CV ══════════════ -->
+<section id="cv">
+    <h2>Curriculum Vitae</h2>
+
+    <h3>Positions</h3>
+    <ul class="timeline">
+        <li>
+            <span class="year">2025 &ndash; present</span>
+            <div class="desc">
+                <strong>ATER</strong>, IUT d'Aurillac, Département Science des données<br>
+                <span class="inst">Université Clermont Auvergne &mdash; LMBP (UMR CNRS 6620)</span>
+            </div>
+        </li>
+        <li>
+            <span class="year">2024 &ndash; 2025</span>
+            <div class="desc">
+                <strong>ATER</strong>, IUT de Carcassonne, Département Science des données<br>
+                <span class="inst">Université de Perpignan Via Domitia &mdash; LAMPS</span>
+            </div>
+        </li>
+        <li>
+            <span class="year">2021 &ndash; present</span>
+            <div class="desc">
+                <strong>Maître de conférences</strong>, Faculté des sciences<br>
+                <span class="inst">Université Mouloud Mammeri, Tizi-Ouzou, Algérie</span>
+            </div>
+        </li>
+    </ul>
+
+    <h3>Education</h3>
+    <ul class="timeline">
+        <li>
+            <span class="year">2021</span>
+            <div class="desc">
+                <strong>Doctorat en Mathématiques</strong> &mdash; Mathématiques Appliquées, Processus Aléatoires et Statistiques<br>
+                <span class="inst">Université Mouloud Mammeri, Tizi-Ouzou, Algérie</span>
+            </div>
+        </li>
+        <li>
+            <span class="year">2013</span>
+            <div class="desc">
+                <strong>Master II en Mathématiques</strong> &mdash; Probabilités et Statistiques<br>
+                <span class="inst">Université Mouloud Mammeri, Algérie</span>
+            </div>
+        </li>
+        <li>
+            <span class="year">2011</span>
+            <div class="desc">
+                <strong>Licence en Mathématiques</strong><br>
+                <span class="inst">Université Mouloud Mammeri, Algérie</span>
+            </div>
+        </li>
+    </ul>
+
+    <h3>Qualifications &amp; Certifications</h3>
+    <p>Qualification CNU section 26. Coursera certifications: Data Analysis with R Programming, Supervised Machine Learning (Regression and Classification), Advanced Learning Algorithms.</p>
+
+    <h3>Supervision</h3>
+    <p>Participation in the co-supervision of <strong>Amel Saidi</strong> (2019&ndash;2022), PhD in Mathematics (Probabilités &amp; Statistique): <em>Estimation et Prédiction des Processus Spatiaux</em>, Université Mouloud Mammeri.</p>
+
+    <h3>Scientific Visits &amp; Seminars</h3>
+    <p>Seminar at LMBP, Clermont-Ferrand (February 9, 2026): <em>"On the Asymptotic Behavior of the Multi-step Prediction Error for a Nonlinear Random Field Model with Estimated Coefficients and Applications."</em></p>
+    <p>Seminar at LAMPS, Perpignan (January 2025): <em>"Central Limit Theorem for the MLE of 2D-RCAR Models: Application to Temperature Data Estimation in Metropolitan France."</em></p>
+    <p>Research visit at Université de Lorraine (June&ndash;July 2024), invited by Prof. Ali Zemouche, on statistical predictors for estimating missing data and delays in dynamical systems.</p>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-line"><span class="label">Email</span> <a href="/cdn-cgi/l/email-protection#147b617166707d753a7566716e7f7d546177753a7266"><span class="__cf_email__" data-cfemail="ee819b8b9c8a878fc08f9c8b948587ae9b8d8fc0889c">[email&#160;protected]</span></a></div>
+    <div class="contact-line"><span class="label">Address</span> IUT d'Aurillac, 100 rue de l'Égalité, 15000 Aurillac, France</div>
+    <div class="contact-line"><span class="label">Lab</span> LMBP (UMR CNRS 6620), Université Clermont Auvergne</div>
+</section>
+
+<footer>
+    &copy; 2026 Ouerdia Arezki
+</footer>
+
+</main>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</body>
+</html>
