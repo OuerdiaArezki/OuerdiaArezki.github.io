@@ -477,6 +477,56 @@
             margin: 0.8rem 0 1.2rem;
         }
 
+        /* ═══ Certificates ═══ */
+        .cert-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+        .cert-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.9rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            gap: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .cert-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        .cert-thumb {
+            width: 90px;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            flex-shrink: 0;
+        }
+        .cert-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .cert-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.35;
+        }
+        .cert-source {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .cert-card--no-img {
+            min-height: 70px;
+        }
+
         /* ═══ Responsive ═══ */
         @media (max-width: 600px) {
             body { font-size: 15px; }
@@ -777,11 +827,36 @@
     </ul>
 
     <h3>Qualifications &amp; Certifications</h3>
-    <p>Qualification CNU section 26. Coursera certifications:
-        <a href="https://coursera.org/share/c45223d6eb869c325c34ef2250ee251c" target="_blank" rel="noopener">Data Analysis with R Programming</a> <a href="Coursera_ADPUN5EFVPIR.pdf" target="_blank" rel="noopener">[PDF]</a>,
-        <a href="https://coursera.org/share/c9ac7fce10a6b60ea1cc5df278eddb0c" target="_blank" rel="noopener">Supervised Machine Learning: Regression and Classification</a> <a href="Coursera_ALWXLJWYM5EH.pdf" target="_blank" rel="noopener">[PDF]</a>,
-        <a href="https://coursera.org/share/87ada6dd6c35205b73e7893446e758b7" target="_blank" rel="noopener">Advanced Learning Algorithms</a> <a href="Coursera_XFQMG8QB0VF0.pdf" target="_blank" rel="noopener">[PDF]</a>,
-        <a href="https://www.coursera.org/learn/neural-networks-deep-learning" target="_blank" rel="noopener">Neural Networks and Deep Learning</a>.</p>
+    <p>Qualification CNU section 26. Coursera certifications:</p>
+    <div class="cert-grid">
+        <a href="https://www.coursera.org/account/accomplishments/verify/ADPUN5EFVPIR?utm_product=course" target="_blank" rel="noopener" class="cert-card">
+            <img src="cert_r_thumb.png" alt="Data Analysis with R Programming Certificate" class="cert-thumb">
+            <div class="cert-info">
+                <span class="cert-label">Data Analysis with R Programming</span>
+                <span class="cert-source">coursera.org</span>
+            </div>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/ALWXLJWYM5EH?utm_source=ln&amp;utm_medium=certificate&amp;utm_content=cert_image&amp;utm_campaign=pdf_header_button&amp;utm_product=course" target="_blank" rel="noopener" class="cert-card">
+            <img src="cert_ml_thumb.png" alt="Supervised Machine Learning Certificate" class="cert-thumb">
+            <div class="cert-info">
+                <span class="cert-label">Supervised Machine Learning: Regression and Classification</span>
+                <span class="cert-source">coursera.org</span>
+            </div>
+        </a>
+        <a href="https://www.coursera.org/account/accomplishments/verify/XFQMG8QB0VF0?utm_source=ln&amp;utm_medium=certificate&amp;utm_content=cert_image&amp;utm_campaign=sharing_cta&amp;utm_product=course" target="_blank" rel="noopener" class="cert-card">
+            <img src="cert_algo_thumb.png" alt="Advanced Learning Algorithms Certificate" class="cert-thumb">
+            <div class="cert-info">
+                <span class="cert-label">Advanced Learning Algorithms</span>
+                <span class="cert-source">coursera.org</span>
+            </div>
+        </a>
+        <a href="https://www.coursera.org/learn/neural-networks-deep-learning" target="_blank" rel="noopener" class="cert-card cert-card--no-img">
+            <div class="cert-info">
+                <span class="cert-label">Neural Networks and Deep Learning</span>
+                <span class="cert-source">coursera.org</span>
+            </div>
+        </a>
+    </div>
 
     <h3>Supervision</h3>
     <p>Participation in the co-supervision of <strong>Amel Saidi</strong> (2019&ndash;2022), PhD in Mathematics (Probabilités &amp; Statistique): <em>Estimation et Prédiction des Processus Spatiaux</em>, Université Mouloud Mammeri.</p>
